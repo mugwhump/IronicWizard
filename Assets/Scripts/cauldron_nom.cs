@@ -7,7 +7,18 @@ public class cauldron_nom : MonoBehaviour {
     public int redCount = 0; //Some counters for recipes
     public int greenCount = 0;
     public int blueCount = 0;
-    
+    private bool isShrink = false; //For clarity, using to avoid outputting from cauldron while it is shrinking/consuming anything
+    public GameObject output;
+
+    public recipe baconRecipe = new recipe(2,1,0, bacon);
+    public recipe friedEggRecipe = new recipe(2, 2, 1, friedEgg);
+    public recipe espressoRecipe = new recipe(1, 2, 0, espresso);
+    public recipe pancakeRecipe = new recipe(1, 2, 2, pancake);
+    public recipe cerealRecipe = new recipe(0, 1, 2, cereal);
+    public recipe totParpsRecipie = new recipe(1, 2, 2, totParps);
+    public recipe orangeJuiceRecipie = new recipe(3, 0, 0, orangeJuice);
+    public recipe teapotRecipe = new recipe(2, 2, 2, teapot);
+
     void OnCollisionEnter ( Collision other )
     {
         var obj = other.gameObject;
@@ -18,6 +29,16 @@ public class cauldron_nom : MonoBehaviour {
             blueCount += eatMe.blueValue;
             StartCoroutine(shrink(shrinkTime, other.gameObject));
             Debug.Log(redCount + ", " + blueCount + ", " + greenCount);
+        }
+    }
+
+    void Update()
+    {
+        if (!isShrink) //Avoiding outputting anything while the cauldron is eating things!
+        {
+            //Compare colourCounts to recipies
+            //Subtract the requisite colourCounts
+            //Spawn the object and launch it
         }
     }
 
@@ -35,6 +56,7 @@ public class cauldron_nom : MonoBehaviour {
 
     IEnumerator shrink(float time, GameObject toShrink)
         {
+            isShrink = true;
             Vector3 originalScale = toShrink.transform.localScale;
             Vector3 destinationScale = new Vector3(0.1f, 0.1f, 0.1f);
 
@@ -48,5 +70,22 @@ public class cauldron_nom : MonoBehaviour {
             } while (currentTime <= time);
 
             Destroy(toShrink);
+            isShrink = false;
+    }
+
+    public class recipe
+    {
+        public int redCost;
+        public int greenCost;
+        public int blueCost;
+        public GameObject output;
+
+        public recipe(int redC, int greenC, int blueC, GameObject outp)
+        {
+            redCost = redC;
+            greenCost = greenC;
+            blueCost = blueC;
+            output = outp;
         }
+    }
 }
