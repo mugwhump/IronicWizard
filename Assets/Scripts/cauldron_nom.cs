@@ -20,7 +20,7 @@ public class cauldron_nom : MonoBehaviour {
 
     void OnTriggerEnter ( Collider other )
     {
-        if (!other.gameObject.CompareTag("Wand") && !other.gameObject.CompareTag("MainCamera") && !other.gameObject.CompareTag("Cauldron") && !other.gameObject.CompareTag("GameController")) { 
+        if (other.gameObject.CompareTag("Edible")) { 
             key = other.name;
             if (!cauldronHas.ContainsKey(key))
             {
