@@ -10,14 +10,14 @@ public class cauldron_nom : MonoBehaviour {
     private bool isShrink = false; //For clarity, using to avoid outputting from cauldron while it is shrinking/consuming anything
     public GameObject output;
 
-    public recipe baconRecipe = new recipe(2,1,0, bacon);
-    public recipe friedEggRecipe = new recipe(2, 2, 1, friedEgg);
-    public recipe espressoRecipe = new recipe(1, 2, 0, espresso);
-    public recipe pancakeRecipe = new recipe(1, 2, 2, pancake);
-    public recipe cerealRecipe = new recipe(0, 1, 2, cereal);
-    public recipe totParpsRecipie = new recipe(1, 2, 2, totParps);
-    public recipe orangeJuiceRecipie = new recipe(3, 0, 0, orangeJuice);
-    public recipe teapotRecipe = new recipe(2, 2, 2, teapot);
+    //public recipe baconRecipe = new recipe(2,1,0, bacon);
+    //public recipe friedEggRecipe = new recipe(2, 2, 1, friedEgg);
+    //public recipe espressoRecipe = new recipe(1, 2, 0, espresso);
+    //public recipe pancakeRecipe = new recipe(1, 2, 2, pancake);
+    //public recipe cerealRecipe = new recipe(0, 1, 2, cereal);
+    //public recipe totParpsRecipie = new recipe(1, 2, 2, totParps);
+    //public recipe orangeJuiceRecipie = new recipe(3, 0, 0, orangeJuice);
+    //public recipe teapotRecipe = new recipe(2, 2, 2, teapot);
 
     void OnCollisionEnter ( Collision other )
     {
