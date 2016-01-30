@@ -4,45 +4,32 @@ using System.Collections;
 public class cauldron_nom : MonoBehaviour {
     public Hashtable cauldronHas = new Hashtable(); //Let's use a Hashtable to keep track of what's in the cauldron
     public float shrinkTime = 0.5f;
-    private int increment = 1; //We add one thing at a time
-    private int prev = 0; //We start with nothing in the cauldron
-    private string key = null; //Names are annoying
-
-	// Use this for initialization
-	void Start () {
-        
-	}
-
-	// Update is called once per frame
-	void Update () {
-        	
-	}
-
-    void OnTriggerEnter ( Collider other )
+    public int redCount = 0; //Some counters for recipes
+    public int greenCount = 0;
+    public int blueCount = 0;
+    
+    void OnCollisionEnter ( Collision other )
     {
-        if (!other.gameObject.CompareTag("Wand") && !other.gameObject.CompareTag("MainCamera") && !other.gameObject.CompareTag("Cauldron") && !other.gameObject.CompareTag("GameController")) { 
-            key = other.name;
-            if (!cauldronHas.ContainsKey(key))
-            {
-                cauldronHas[key] = increment;
-                StartCoroutine(shrink(shrinkTime, other.gameObject));
-                Debug.Log("Nom: " + key);
-            }
-            else
-            {
-                int prev = (int)cauldronHas[key];
-                cauldronHas[key] = prev + increment;
-                StartCoroutine(shrink(shrinkTime, other.gameObject));
-                Debug.Log("Nom: " + key + " " + cauldronHas[key]);
-            }
+        var obj = other.gameObject;
+        var eatMe = obj.GetComponent<Edible>();
+        if (!playerGrabbing(other.gameObject) && eatMe) {
+            redCount += eatMe.redValue;
+            greenCount += eatMe.greenValue;
+            blueCount += eatMe.blueValue;
+            StartCoroutine(shrink(shrinkTime, other.gameObject));
+            Debug.Log(redCount + ", " + blueCount + ", " + greenCount);
         }
     }
 
-    bool playerGrabbing(GameObject obj)
+    bool playerGrabbing(GameObject grabbed)
     {
-        //if (obj.GetComponent<Rigidbody>() == GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Player> ().SetGrabbed (rb)) //Check to see if an object is currently grabbed by the player
+        if (grabbed.GetComponent<Rigidbody>() != GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Player> ().GetGrabbed()) //Check to see if an object is currently grabbed by the player
         {
             return false;
+        }
+        else
+        {
+            return true;
         }
     }
 
