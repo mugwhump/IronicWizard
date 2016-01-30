@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/morning_ritual.unity
-  isLoaded: 1
-  isActive: 1
