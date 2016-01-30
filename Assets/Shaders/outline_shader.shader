@@ -105,6 +105,7 @@ ENDCG
  
 			CGPROGRAM
 			#pragma vertex vert
+			#pragma fragment frag
 			#pragma exclude_renderers gles xbox360 ps3
 			ENDCG
 			SetTexture [_MainTex] { combine primary }

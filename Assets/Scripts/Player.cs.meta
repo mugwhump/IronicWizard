@@ -1,10 +1,16 @@
 fileFormatVersion: 2
 guid: 20c5c832550d31249910acc255dc6369
-timeCreated: 1454144675
+timeCreated: 1454165330
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - bonkCollider: {fileID: 6555928, guid: 64522d3b524d4c1458d4c532fc255c67, type: 2}
+  - grabCollider: {fileID: 6587336, guid: 01eb5171c71975148818d86c18f63f72, type: 2}
+  - mouseClickParticle: {fileID: 19897276, guid: 6a759a3929ac6174d9eee63055fa342e,
+      type: 2}
+  - grabParticle: {fileID: 19809134, guid: 7b87f5c99fda1724aa799fc83817fb7e, type: 2}
+  - wand: {fileID: 13684758, guid: cc24c4f1bc98d894bb00350d712bf4b6, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

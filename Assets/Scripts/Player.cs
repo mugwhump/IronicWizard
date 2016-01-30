@@ -13,6 +13,7 @@ public class Player : MonoBehaviour {
 
 	Rigidbody grabbedObject = null; //object that is currently grabbed
 	Vector3 grabPos; //position where you grab and hold objects
+    private ParticleSystem particleSpray; //Need this to have something to attach to the wand
     private ParticleSystem particleStream; //Need this to have something to Destroy() later
 
 	// Use this for initialization
@@ -26,11 +27,13 @@ public class Player : MonoBehaviour {
 		grabPos = transform.position + (transform.forward * 3f);
 		if (Input.GetButtonDown ("Fire1")) {
 			Instantiate (bonkCollider, transform.position + (transform.forward * 3f), transform.rotation);
-			Instantiate (mouseClickParticle, (wand.transform.position + wand.transform.up), transform.rotation);
+			particleSpray = (ParticleSystem) Instantiate (mouseClickParticle, (wand.transform.position + wand.transform.up), transform.rotation);
+            particleSpray.gameObject.transform.parent = wand.transform;
 		}
 		if (Input.GetButtonDown ("Fire2")) {
 			Grab ();
             particleStream = (ParticleSystem) Instantiate(grabParticle, (wand.transform.position + wand.transform.up), transform.rotation);
+            particleStream.gameObject.transform.parent = wand.transform;
         }
 		if (Input.GetButtonUp ("Fire2")) {
 			Release ();
