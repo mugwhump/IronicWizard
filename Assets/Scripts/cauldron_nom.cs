@@ -27,7 +27,7 @@ public class cauldron_nom : MonoBehaviour {
             redCount += eatMe.redValue;
             greenCount += eatMe.greenValue;
             blueCount += eatMe.blueValue;
-            StartCoroutine(shrink(shrinkTime, other.gameObject));
+            StartCoroutine(shrink(shrinkTime, eatMe));
             Debug.Log(redCount + ", " + blueCount + ", " + greenCount);
         }
     }
@@ -54,23 +54,23 @@ public class cauldron_nom : MonoBehaviour {
         }
     }
 
-    IEnumerator shrink(float time, GameObject toShrink)
+    IEnumerator shrink(float time, Edible toShrink)
+    {
+        isShrink = true;
+        Vector3 originalScale = toShrink.transform.localScale;
+        Vector3 destinationScale = new Vector3(0.1f, 0.1f, 0.1f);
+
+        float currentTime = 0.0f;
+
+        do
         {
-            isShrink = true;
-            Vector3 originalScale = toShrink.transform.localScale;
-            Vector3 destinationScale = new Vector3(0.1f, 0.1f, 0.1f);
+            toShrink.transform.localScale = Vector3.Lerp(originalScale, destinationScale, currentTime / time);
+            currentTime += Time.deltaTime;
+            yield return null;
+        } while (currentTime <= time);
 
-            float currentTime = 0.0f;
-
-            do
-            {
-                toShrink.transform.localScale = Vector3.Lerp(originalScale, destinationScale, currentTime / time);
-                currentTime += Time.deltaTime;
-                yield return null;
-            } while (currentTime <= time);
-
-            Destroy(toShrink);
-            isShrink = false;
+		toShrink.UseUp();
+        isShrink = false;
     }
 
     public class recipe
