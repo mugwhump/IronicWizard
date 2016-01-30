@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class also_de_me : MonoBehaviour {
+public class del_me : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
