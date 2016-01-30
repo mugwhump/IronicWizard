@@ -7,9 +7,6 @@ public class cauldron_nom : MonoBehaviour {
     public int redCount = 0; //Some counters for recipes
     public int greenCount = 0;
     public int blueCount = 0;
-    private int increment = 1; //We add one thing at a time
-    private int prev = 0; //We start with nothing in the cauldron
-    private string key = null; //Names are annoying
     
     void OnCollisionEnter ( Collision other )
     {
@@ -26,13 +23,13 @@ public class cauldron_nom : MonoBehaviour {
 
     bool playerGrabbing(GameObject grabbed)
     {
-        //if (grabbed.GetComponent<Rigidbody>() == GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Player> ().SetGrabbed (rb)) //Check to see if an object is currently grabbed by the player
+        if (grabbed.GetComponent<Rigidbody>() != GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Player> ().GetGrabbed()) //Check to see if an object is currently grabbed by the player
         {
             return false;
         }
-        //else
+        else
         {
-            //return true;
+            return true;
         }
     }
 
