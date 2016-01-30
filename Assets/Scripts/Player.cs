@@ -10,6 +10,7 @@ public class Player : MonoBehaviour {
     public Collider wand; //Where the magic comes from!
 
 	public float grabforce; //force applied every frame to grabbed object
+    public float grabDist = 6; //distance to keep the grabbed object
 
 	Rigidbody grabbedObject = null; //object that is currently grabbed
 	Vector3 grabPos; //position where you grab and hold objects
@@ -24,7 +25,7 @@ public class Player : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		grabPos = transform.position + (transform.forward * 3f);
+		grabPos = transform.position + (transform.forward * grabDist);
 		if (Input.GetButtonDown ("Fire1")) {
 			Instantiate (bonkCollider, transform.position + (transform.forward * 3f), transform.rotation);
 			particleSpray = (ParticleSystem) Instantiate (mouseClickParticle, (wand.transform.position + wand.transform.up), transform.rotation);
