@@ -5,7 +5,9 @@ public class apply_force : MonoBehaviour {
 	public float force;
 
 	void OnTriggerEnter (Collider other) {
-		other.GetComponent<Rigidbody>().AddForce(transform.forward * force, ForceMode.Impulse);
+		if (other.GetComponent<Rigidbody> () != null) {
+			other.GetComponent<Rigidbody> ().AddForce (transform.forward * force, ForceMode.Impulse);
+		}
 	}
 		
 
