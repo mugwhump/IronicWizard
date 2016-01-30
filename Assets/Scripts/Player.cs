@@ -6,12 +6,14 @@ public class Player : MonoBehaviour {
 	public Collider bonkCollider; //hitbox for bonking stuff
 	public Collider grabCollider; //hitbox for grabbing stuff
     public ParticleSystem mouseClickParticle; //the mousey-clicky particle effect
+    public ParticleSystem grabParticle; //the grabby particle effect
     public Collider wand; //Where the magic comes from!
 
 	public float grabforce; //force applied every frame to grabbed object
 
 	Rigidbody grabbedObject = null; //object that is currently grabbed
 	Vector3 grabPos; //position where you grab and hold objects
+    private ParticleSystem particleStream; //Need this to have something to Destroy() later
 
 	// Use this for initialization
 	void Start () {
@@ -28,9 +30,11 @@ public class Player : MonoBehaviour {
 		}
 		if (Input.GetButtonDown ("Fire2")) {
 			Grab ();
-		}
+            particleStream = (ParticleSystem) Instantiate(grabParticle, (wand.transform.position + wand.transform.up), transform.rotation);
+        }
 		if (Input.GetButtonUp ("Fire2")) {
 			Release ();
+            Destroy(particleStream.gameObject);
 		}
 
 		//move grabbed object
