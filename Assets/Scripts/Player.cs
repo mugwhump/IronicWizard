@@ -101,4 +101,12 @@ public class Player : MonoBehaviour {
 			}
 		}
 	}
+
+	public Rigidbody GetGrabbed() {
+		if (activeObj != null && grabbing) {
+			return activeObj;
+		} else {
+			return null;
+		}
+	}
 }
