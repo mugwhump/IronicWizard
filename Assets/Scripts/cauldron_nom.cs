@@ -69,7 +69,7 @@ public class cauldron_nom : MonoBehaviour {
             yield return null;
         } while (currentTime <= time);
 
-		toShrink.UseUp();
+		toShrink.UseUp(originalScale);
         isShrink = false;
     }
 
