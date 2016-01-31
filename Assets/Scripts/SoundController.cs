@@ -25,13 +25,10 @@ public class SoundController : MonoBehaviour {
 		switch (type) {
 		case soundType.glass:
 			return RandomSound (glass);
-			break;
 		case soundType.metal:
 			return RandomSound (metal);
-			break;
 		case soundType.box:
 			return RandomSound (box);
-			break;
 		}
 		return null;
 	}

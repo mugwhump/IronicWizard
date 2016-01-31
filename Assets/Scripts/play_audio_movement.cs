@@ -20,7 +20,7 @@ public class play_audio_movement : MonoBehaviour {
 	}
 
 	void OnCollisionEnter (Collision other) {
-		Debug.Log ("Play sound!");
+		//Debug.Log ("Play sound!");
 		AudioClip clip = GameObject.FindGameObjectWithTag ("SoundController").GetComponent<SoundController> ().GetSound (type);
 		source.clip = clip;
 		source.Play ();
