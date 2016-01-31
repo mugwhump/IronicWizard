@@ -12,9 +12,9 @@ public class cauldron_nom : Bonkable
     public GameObject friedEgg;
     public GameObject toast;
     public GameObject orangeJuice;
-    public Plane eggyPlane;
-    public Plane juicePlane;
-    public Plane toastPlane;
+    public GameObject eggyPlane;
+    public GameObject juicePlane;
+    public GameObject toastPlane;
     private int score = 0;
     private bool cookEggs = false;
     private bool cookJuice = false;
@@ -42,9 +42,9 @@ public class cauldron_nom : Bonkable
 
     void start()
     {
-        eggyPlane.renderer = false;
-        juicePlane.renderer = false;
-        toastPlane.renderer = false;
+        eggyPlane.GetComponent<MeshRenderer>().enabled = false;
+        juicePlane.GetComponent<MeshRenderer>().enabled = false;
+        toastPlane.GetComponent<MeshRenderer>().enabled = false;
     }
 
     void Update()
@@ -116,7 +116,7 @@ public class cauldron_nom : Bonkable
                     {
                         score += 1;
                         cookEggs = true;
-                        eggPlane.renderer.enabled = true;
+                        eggyPlane.GetComponent<MeshRenderer>().enabled = true;
                     }
                 }
                 break;
@@ -130,7 +130,7 @@ public class cauldron_nom : Bonkable
                     {
                         score += 1;
                         cookJuice = true;
-                        juicePlane.renderer.enabled = true;
+                        juicePlane.GetComponent<MeshRenderer>().enabled = true;
                     }
                 }
                 break;
@@ -145,7 +145,7 @@ public class cauldron_nom : Bonkable
                     {
                         score += 1;
                         cookToast = true;
-                        toastPlane.renderer.enabled = true;
+                        toastPlane.GetComponent<MeshRenderer>().enabled = true;
                     }
                 }
                 break;
