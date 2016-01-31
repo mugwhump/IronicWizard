@@ -2,11 +2,9 @@ gfmanalo@gmail.com
 l33tbmb@gmail.com
 
 --Furniture--
-*Fridge - Glen
-*Cupboards - Kyle -Texture Stage
-	Corner Cupboards
-	Solid Door
-*Cauldron - Glen
+*Fridge - Done
+*Cupboards - Done
+*Cauldron - Done
 
 Sink - Glen
 Counters
@@ -19,7 +17,7 @@ Dishwasher
 
 
 --Knicknacks--
-*Spatula (wand)
+*Spatula (wand) - Done
 *Cookbook
 *Frypan - texture stage
 *Pot - texture stage
@@ -31,23 +29,22 @@ Dishwasher
 *Mortar & Pestle
 *Bowls
 *Plates - Texture stage
-*Jugs of "liquid"
-*Flasks
+*Jugs of "liquid" - Done
+*Flasks - Done
 *Cans (food stuffs)
-*Boxes (food stuffs)
+*Boxes (food stuffs) - Done (4 types)
 *Silverware
 *Knives
 *Salt and Pepper Shakers
+Toaster
 
-Teapot - 3ds Max
-Canning Jars
 Cookie Jar 
 Bags (baking) 
 Wooden Spoons/Forks
 Cleaver
 Rolling Pin
 Cutting Board
-Toaster
+
 Microwave
 Proofer
 Breadbox
