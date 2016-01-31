@@ -41,6 +41,9 @@ public class Player : MonoBehaviour {
 			Release ();
 		}
 
+        //move particle effects, if any
+        //if(FindObjectsOfType<ParticleSystem>().Find("particleStream"))
+
 		//move grabbed object
 		if (activeObj && grabbing) {
 			Vector3 dir = colliderInstance.transform.position - activeObj.transform.position;
@@ -54,10 +57,7 @@ public class Player : MonoBehaviour {
 	}
 
 	//Bonks active object
-	void Bonk() {
-        particleSpray = (ParticleSystem)Instantiate(mouseClickParticle, (wand.transform.position + wand.transform.up), transform.rotation);
-        particleSpray.gameObject.transform.parent = wand.transform;
-
+	void Bonk() {       
         if (activeObj == null)
         {
             return;
@@ -66,7 +66,7 @@ public class Player : MonoBehaviour {
         {
             Bonkable bonk_me = activeObj.gameObject.GetComponent<Bonkable>();
             bonk_me.bonked();
-            activeObj.AddForce(transform.forward * bonkForce / 5, ForceMode.Impulse);
+            activeObj.AddForce(transform.forward * bonkForce, ForceMode.Impulse);
         }
         else
         {
@@ -80,16 +80,15 @@ public class Player : MonoBehaviour {
 			return;
 		grabbing = true;
 		activeObj.useGravity = false;
-		particleStream = (ParticleSystem) Instantiate(grabParticle, (wand.transform.position + wand.transform.up), transform.rotation);
-		particleStream.gameObject.transform.parent = wand.transform;
+		//particleStream = (ParticleSystem) Instantiate(grabParticle, (wand.transform.position + wand.transform.up), transform.rotation);
 	}
 
 	void Release() {
 		grabbing = false;
 		activeObj.useGravity = true;
-        if(GameObject.FindObjectOfType<ParticleSystem>())
+        //if(GameObject.FindObjectOfType<ParticleSystem>())
         {
-            Destroy(particleStream.gameObject);
+            //Destroy(particleStream.gameObject);
         }       
 	}
 
