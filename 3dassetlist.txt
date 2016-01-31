@@ -3,18 +3,17 @@ l33tbmb@gmail.com
 
 --Furniture--
 *Fridge - Glen
-*Cupboards - Kyle
+*Cupboards - Kyle -Texture Stage
 	Corner Cupboards
 	Solid Door
-	Glass Door
-*Drawers (lower shelves)
-*Stove top - Kyle
 *Cauldron - Glen
-*Counters
-*Sink - Glen
 
-Pantry - Kyle
-Island
+Sink - Glen
+Counters
+Drawers (lower shelves)
+Stove top
+Pantry
+Island - texture stage
 Chair/Stool
 Dishwasher
 
@@ -22,8 +21,8 @@ Dishwasher
 --Knicknacks--
 *Spatula (wand)
 *Cookbook
-*Frypan
-*Pot
+*Frypan - texture stage
+*Pot - texture stage
 *Meat
 *Fruit
 *Veggies
@@ -31,7 +30,7 @@ Dishwasher
 *Coffee Beans
 *Mortar & Pestle
 *Bowls
-*Plates
+*Plates - Texture stage
 *Jugs of "liquid"
 *Flasks
 *Cans (food stuffs)
