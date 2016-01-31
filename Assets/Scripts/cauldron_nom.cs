@@ -10,11 +10,15 @@ public class cauldron_nom : Bonkable
     public int greenCount = 0;
     public int blueCount = 0;
     public GameObject friedEgg;
-    public GameObject hardBoiledEgg;
-    public GameObject coffee;
     public GameObject toast;
     public GameObject orangeJuice;
-    public GameObject waffles;
+    public Plane eggyPlane;
+    public Plane juicePlane;
+    public Plane toastPlane;
+    private int score = 0;
+    private bool cookEggs = false;
+    private bool cookJuice = false;
+    private bool cookToast = false;
     private bool isShrink = false; //For clarity, using to avoid outputting from cauldron while it is shrinking/consuming anything
     public ingredient cookwareValue = ingredient.RGB;
 
@@ -33,6 +37,21 @@ public class cauldron_nom : Bonkable
                 cookwareValue = eatMe.id;
             }          
             StartCoroutine(shrink(shrinkTime, eatMe));
+        }
+    }
+
+    void start()
+    {
+        eggyPlane.renderer = false;
+        juicePlane.renderer = false;
+        toastPlane.renderer = false;
+    }
+
+    void Update()
+    {
+        if(score >= 3)
+        {
+            GetComponent<cookbook>().ChangeTexture(); // YOU'RE WINNER!
         }
     }
 
@@ -93,6 +112,12 @@ public class cauldron_nom : Bonkable
                     redCount -= 2;
                     greenCount -= 1;
                     Instantiate(friedEgg, (this.transform.position + this.transform.forward * 5), this.transform.rotation);
+                    if (!cookEggs)
+                    {
+                        score += 1;
+                        cookEggs = true;
+                        eggPlane.renderer.enabled = true;
+                    }
                 }
                 break;
             case ingredient.juicer:
@@ -101,6 +126,12 @@ public class cauldron_nom : Bonkable
                     greenCount -= 1;
                     blueCount -= 2;
                     Instantiate(orangeJuice, (this.transform.position + this.transform.forward * 5), this.transform.rotation);
+                    if (!cookJuice)
+                    {
+                        score += 1;
+                        cookJuice = true;
+                        juicePlane.renderer.enabled = true;
+                    }
                 }
                 break;
             case ingredient.toaster:
@@ -110,6 +141,12 @@ public class cauldron_nom : Bonkable
                     greenCount -= 1;
                     blueCount -= 2;
                     Instantiate(toast, (this.transform.position + this.transform.forward * 5), this.transform.rotation);
+                    if (!cookToast)
+                    {
+                        score += 1;
+                        cookToast = true;
+                        toastPlane.renderer.enabled = true;
+                    }
                 }
                 break;
             default:
