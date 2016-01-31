@@ -15,7 +15,8 @@ public class cauldron_nom : Bonkable
     public Transform eggyPlane;
     public Transform juicePlane;
     public Transform toastPlane;
-    private int score = 0;
+    public int score = 3;
+    public cookbook winBook;
     private bool cookEggs = false;
     private bool cookJuice = false;
     private bool cookToast = false;
@@ -61,9 +62,9 @@ public class cauldron_nom : Bonkable
 
     void Update()
     {
-        if(score >= 3)
+        if(score == 3)
         {
-            GetComponent<cookbook>().ChangeTexture(); // YOU'RE WINNER!
+            winBook.ChangeTexture(); // YOU'RE WINNER!
         }
     }
 
