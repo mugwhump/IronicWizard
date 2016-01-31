@@ -78,10 +78,8 @@ public class cauldron_nom : Bonkable
     void recipeCheck(ingredient cookware)
     {
         AudioSource audio = GetComponentInParent<AudioSource>();
-        if (!audio.isPlaying)
-        {
-            audio.Play();
-        }
+        audio.Play();
+        
         switch (cookware)
         { 
             case ingredient.fryPan:

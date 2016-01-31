@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum soundType {glass};
+public enum soundType {glass, metal, box};
 
 //plays object's sound type upon drastic movement
 public class play_audio_movement : MonoBehaviour {
@@ -20,7 +20,7 @@ public class play_audio_movement : MonoBehaviour {
 	}
 
 	void OnCollisionEnter (Collision other) {
-		Debug.Log ("Play sound!");
+		//Debug.Log ("Play sound!");
 		AudioClip clip = GameObject.FindGameObjectWithTag ("SoundController").GetComponent<SoundController> ().GetSound (type);
 		source.clip = clip;
 		source.Play ();
