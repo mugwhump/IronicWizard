@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum soundType {glass};
+public enum soundType {glass, metal, box};
 
 //plays object's sound type upon drastic movement
 public class play_audio_movement : MonoBehaviour {
