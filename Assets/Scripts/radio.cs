@@ -10,11 +10,11 @@ public class radio : Bonkable {
         AudioSource audio = GetComponentInParent<AudioSource>();
         if (isOn)
         {
-            audio.Stop();
+            audio.mute = true;
             isOn = false;
         } else
         {
-            audio.Play();
+            audio.mute = false;
             isOn = true;
         }
     }
