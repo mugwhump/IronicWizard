@@ -6,7 +6,7 @@ public class StartScreen : MonoBehaviour
 	//We make a static variable to our LoadingScreen instance
 	static StartScreen instance;
 	//reference to gameobject with the static image
-	GameObject loadingScreenImage;
+	public GameObject loadingScreenImage;
 
 	//function which executes on scene awake before the start function
 	void Awake()
@@ -21,15 +21,15 @@ public class StartScreen : MonoBehaviour
 			return;
 		}
 		instance = this;   
-		instance.loadingScreenImage.SetActive(false);
-		DontDestroyOnLoad(this);  //make this object persistent between scenes
+		//instance.loadingScreenImage.SetActive(false);
+//		DontDestroyOnLoad(this);  //make this object persistent between scenes
 	}
 
 	void Update()
 	{
 		//hide the loading screen if the scene is loaded
-		if(!Application.isLoadingLevel)
-			hide();
+//		if(!Application.isLoadingLevel)
+//			hide();
 	}
 	//function to enable the loading screen
 	public static void show()
