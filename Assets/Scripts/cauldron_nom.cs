@@ -76,8 +76,13 @@ public class cauldron_nom : Bonkable
 
     void recipeCheck(ingredient cookware)
     {
-        switch (cookware)
+        AudioSource audio = GetComponentInParent<AudioSource>();
+        if (!audio.isPlaying)
         {
+            audio.Play();
+        }
+        switch (cookware)
+        { 
             case ingredient.fryPan:
                 if (redCount >= 2 && greenCount >= 1)
                 {
