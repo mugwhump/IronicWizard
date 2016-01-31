@@ -1,7 +1,6 @@
-Library
-Temp
-Exes
-desktop.ini
-desktop.ini.meta
-*.sln
-*.csproj
+Library/
+Temp/
+Assembly-CSharp-Editor.csproj
+Assembly-CSharp-firstpass.csproj
+Assembly-CSharp.csproj
+IronicWizard.sln
