@@ -46,17 +46,28 @@ public class Player : MonoBehaviour {
 			Vector3 dir = colliderInstance.transform.position - activeObj.transform.position;
 			dir.Normalize ();
 			activeObj.AddForce (dir * grabforce);
-			Debug.Log ("I graeb u");
 		}
 	}
 
 	//Bonks active object
 	void Bonk() {
-		if (activeObj == null)
-			return;
-		activeObj.AddForce (transform.forward * bonkForce, ForceMode.Impulse);
-		particleSpray = (ParticleSystem) Instantiate (mouseClickParticle, (wand.transform.position + wand.transform.up), transform.rotation);
-		particleSpray.gameObject.transform.parent = wand.transform;
+        particleSpray = (ParticleSystem)Instantiate(mouseClickParticle, (wand.transform.position + wand.transform.up), transform.rotation);
+        particleSpray.gameObject.transform.parent = wand.transform;
+
+        if (activeObj == null)
+        {
+            return;
+        }
+        else if (activeObj.gameObject.GetComponent<Bonkable>())
+        {
+            Bonkable bonk_me = activeObj.gameObject.GetComponent<Bonkable>();
+            bonk_me.bonked();
+            activeObj.AddForce(transform.forward * bonkForce / 5, ForceMode.Impulse);
+        }
+        else
+        {
+            activeObj.AddForce(transform.forward * bonkForce, ForceMode.Impulse);
+        }
 	}
 
 	//Grabs active object

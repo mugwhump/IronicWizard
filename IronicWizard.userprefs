@@ -1,0 +1,18 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameManager.cs">
+    <Files>
+      <File FileName="Assets\Scripts\StartScreen.cs" Line="7" Column="30" />
+      <File FileName="Assets\Scripts\apply_force.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\grab.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Player.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Edible.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\cauldron_nom.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GameManager.cs" Line="16" Column="2" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

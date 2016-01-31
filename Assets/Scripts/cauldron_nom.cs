@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class cauldron_nom : MonoBehaviour
+public class cauldron_nom : Bonkable
 {
     public Hashtable cauldronHas = new Hashtable(); //Let's use a Hashtable to keep track of what's in the cauldron
+    public float foodForce = 50.0f;
     public float shrinkTime = 0.5f;
     public int redCount = 0; //Some counters for recipes
     public int greenCount = 0;
@@ -17,24 +18,23 @@ public class cauldron_nom : MonoBehaviour
         var eatMe = obj.GetComponent<Edible>();
         if (!playerGrabbing(other.gameObject) && eatMe && !isShrink)
         {
-            redCount += eatMe.redValue;
+            redCount += eatMe.redValue;     //Consume the RGB values
             greenCount += eatMe.greenValue;
             blueCount += eatMe.blueValue;
-            cookwareValue = eatMe.id;
+            if (eatMe.id != ingredient.RGB) //Keep the value of the last cookware item fed to the cauldron
+            {
+                cookwareValue = eatMe.id;
+            }          
             StartCoroutine(shrink(shrinkTime, eatMe));
-            Debug.Log(redCount + ", " + blueCount + ", " + greenCount);
         }
     }
 
-    void Update()
+    public override void bonked()
     {
-        if (!isShrink) //Avoiding outputting anything while the cauldron is eating things!
+       if (cookwareValue != ingredient.RGB) //If we've actually got cookware in the cauldron
         {
-            if (cookwareValue != ingredient.RGB) //If we've actually got cookware in the cauldron
-            {
-                recipeCheck(cookwareValue);
-                cookwareValue = ingredient.RGB;
-            }
+            recipeCheck(cookwareValue);
+            cookwareValue = ingredient.RGB;
         }
     }
 
@@ -54,7 +54,7 @@ public class cauldron_nom : MonoBehaviour
     {
         isShrink = true;
         Vector3 originalScale = toShrink.transform.localScale;
-        Vector3 destinationScale = new Vector3(0.1f, 0.1f, 0.1f);
+        Vector3 destinationScale = new Vector3(0.1f,0.1f,0.1f);
 
         float currentTime = 0.0f;
 
@@ -78,7 +78,7 @@ public class cauldron_nom : MonoBehaviour
                 {
                     redCount -= 2;
                     greenCount -= 1;
-                    //Instantiate friedEgg
+                    //spawnFood(friedEgg);
                     //apply force to launch friedEgg
                 }
                 break;
@@ -87,7 +87,7 @@ public class cauldron_nom : MonoBehaviour
                 {
                     redCount -= 1;
                     greenCount -= 2;
-                    //Instantiate hardBoiledEgg
+                    //spawnFood(hardBoiledEgg);
                     //apply force to launch hardBoiledEgg
                 }
                 break;
@@ -96,7 +96,7 @@ public class cauldron_nom : MonoBehaviour
                 {
                     redCount -= 2;
                     blueCount -= 1;
-                    //Instantiate coffee
+                    //spawnFood(coffee);
                     //apply force to launch coffee
                 }
                 break;
@@ -105,7 +105,7 @@ public class cauldron_nom : MonoBehaviour
                 {
                     redCount -= 1;
                     blueCount -= 2;
-                    //Instantiate waffles
+                    //spawnFood(waffles);
                     //apply force to launch waffles
                 }
                 break;
@@ -114,7 +114,7 @@ public class cauldron_nom : MonoBehaviour
                 {
                     greenCount -= 2;
                     blueCount -= 1;
-                    //Instantiate orangeJuice
+                    //spawnFood(orangeJuice);
                     //apply force to launch orangeJuice
                 }
                 break;
@@ -123,7 +123,7 @@ public class cauldron_nom : MonoBehaviour
                 {
                     greenCount -= 1;
                     blueCount -= 2;
-                    //Instantiate toast
+                    //spawnFood(toast);
                     //apply force to launch toast
                 }
                 break;
@@ -131,5 +131,11 @@ public class cauldron_nom : MonoBehaviour
                 Debug.Log("uhhh");
                 break;
         }
+    }
+
+    void spawnFood(GameObject food)
+    {
+        //GameObject food = Instantiate(food, (transform.position + transform.up * 2), transform.rotation)
+        //food.Rigidbody.AddForce(-1 * transform.position * foodForce, ForceMode.Impulse)
     }
 }
