@@ -5,6 +5,12 @@ public class cookbook_Bonk : Bonkable {
 
     public bool isOpen = false;
     private int page = 0;
+    private Sprite[] pageArray;
+
+    void start()
+    {
+        pageArray = Resources.LoadAll<Sprite>("cookbook");
+    }
 
     public override void bonked()
     {
