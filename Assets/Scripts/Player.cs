@@ -70,7 +70,10 @@ public class Player : MonoBehaviour {
 
 	void Release() {
 		grabbing = false;
-		Destroy(particleStream.gameObject);
+        if(GameObject.FindObjectOfType<ParticleSystem>())
+        {
+            Destroy(particleStream.gameObject);
+        }       
 	}
 
 	//called when object other enters your collider
