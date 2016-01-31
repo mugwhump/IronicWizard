@@ -2,12 +2,12 @@
 using System.Collections;
 
 public class GameManager : MonoBehaviour {
-	public StartScreen screen;
+	//public StartScreen screen;
 	public string nextLevel;
 
 	// Use this for initialization
 	void Start () {
-		screen.show();
+		StartScreen.show();
 	}
 	
 	// Update is called once per frame
