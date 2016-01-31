@@ -6,6 +6,8 @@ public class SoundController : MonoBehaviour {
 	public AudioClip[] glass;
 	public AudioClip[] metal;
 	public AudioClip[] box;
+	public AudioClip[] wizardYays;
+	public AudioClip[] wizardSpells;
 
 	// Use this for initialization
 	void Start () {
