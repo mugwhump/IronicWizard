@@ -80,16 +80,11 @@ public class Player : MonoBehaviour {
 			return;
 		grabbing = true;
 		activeObj.useGravity = false;
-		//particleStream = (ParticleSystem) Instantiate(grabParticle, (wand.transform.position + wand.transform.up), transform.rotation);
 	}
 
 	void Release() {
 		grabbing = false;
-		activeObj.useGravity = true;
-        //if(GameObject.FindObjectOfType<ParticleSystem>())
-        {
-            //Destroy(particleStream.gameObject);
-        }       
+		activeObj.useGravity = true;      
 	}
 
 	//called when object other enters your collider

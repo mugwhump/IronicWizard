@@ -120,16 +120,17 @@ public class cauldron_nom : Bonkable
                 }
                 break;
             case ingredient.juicer:
-                if (greenCount >= 2 && blueCount >= 1)
+                if (greenCount >= 1 && blueCount >= 2)
                 {
-                    greenCount -= 2;
-                    blueCount -= 1;
+                    greenCount -= 1;
+                    blueCount -= 2;
                     Instantiate(orangeJuice, (this.transform.position + this.transform.forward * 5), this.transform.rotation);
                 }
                 break;
             case ingredient.toaster:
-                if (greenCount >= 1 && blueCount >= 2)
+                if (redCount >=1 && greenCount >= 1 && blueCount >= 1)
                 {
+                    redCount -= 1;
                     greenCount -= 1;
                     blueCount -= 2;
                     Instantiate(toast, (this.transform.position + this.transform.forward * 5), this.transform.rotation);
