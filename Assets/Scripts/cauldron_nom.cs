@@ -14,6 +14,7 @@ public class cauldron_nom : Bonkable
     public GameObject coffee;
     public GameObject toast;
     public GameObject orangeJuice;
+    public GameObject waffles;
     private bool isShrink = false; //For clarity, using to avoid outputting from cauldron while it is shrinking/consuming anything
     public ingredient cookwareValue = ingredient.RGB;
 
@@ -99,8 +100,7 @@ public class cauldron_nom : Bonkable
                 {
                     redCount -= 1;
                     greenCount -= 2;
-                    //spawnFood(hardBoiledEgg);
-                    //apply force to launch hardBoiledEgg
+                    Instantiate(hardBoiledEgg, (this.transform.position + this.transform.forward * 5), this.transform.rotation);
                 }
                 break;
             case ingredient.coffeeThing:
@@ -108,8 +108,7 @@ public class cauldron_nom : Bonkable
                 {
                     redCount -= 2;
                     blueCount -= 1;
-                    //spawnFood(coffee);
-                    //apply force to launch coffee
+                    Instantiate(coffee, (this.transform.position + this.transform.forward * 5), this.transform.rotation);
                 }
                 break;
             case ingredient.waffleIron:
@@ -117,8 +116,7 @@ public class cauldron_nom : Bonkable
                 {
                     redCount -= 1;
                     blueCount -= 2;
-                    //spawnFood(waffles);
-                    //apply force to launch waffles
+                    Instantiate(waffles, (this.transform.position + this.transform.forward * 5), this.transform.rotation);
                 }
                 break;
             case ingredient.juicer:
@@ -126,8 +124,7 @@ public class cauldron_nom : Bonkable
                 {
                     greenCount -= 2;
                     blueCount -= 1;
-                    //spawnFood(orangeJuice);
-                    //apply force to launch orangeJuice
+                    Instantiate(orangeJuice, (this.transform.position + this.transform.forward * 5), this.transform.rotation);
                 }
                 break;
             case ingredient.toaster:
@@ -135,8 +132,7 @@ public class cauldron_nom : Bonkable
                 {
                     greenCount -= 1;
                     blueCount -= 2;
-                    //spawnFood(toast);
-                    //apply force to launch toast
+                    Instantiate(toast, (this.transform.position + this.transform.forward * 5), this.transform.rotation);
                 }
                 break;
             default:
