@@ -17,7 +17,8 @@ public class cauldron_nom : Bonkable
     private bool isShrink = false; //For clarity, using to avoid outputting from cauldron while it is shrinking/consuming anything
     public ingredient cookwareValue = ingredient.RGB;
 
-    void OnTriggerEnter(Collider other)
+    //void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     { 
         var obj = other.gameObject;
         var eatMe = obj.GetComponent<Edible>();
