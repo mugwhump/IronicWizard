@@ -95,30 +95,6 @@ public class cauldron_nom : Bonkable
                     Instantiate(friedEgg, (this.transform.position + this.transform.forward * 5), this.transform.rotation);
                 }
                 break;
-            case ingredient.saucePan:
-                if (redCount >= 1 && greenCount >= 2)
-                {
-                    redCount -= 1;
-                    greenCount -= 2;
-                    Instantiate(hardBoiledEgg, (this.transform.position + this.transform.forward * 5), this.transform.rotation);
-                }
-                break;
-            case ingredient.coffeeThing:
-                if (redCount >= 2 && blueCount >= 1)
-                {
-                    redCount -= 2;
-                    blueCount -= 1;
-                    Instantiate(coffee, (this.transform.position + this.transform.forward * 5), this.transform.rotation);
-                }
-                break;
-            case ingredient.waffleIron:
-                if (redCount >= 1 && blueCount >= 2)
-                {
-                    redCount -= 1;
-                    blueCount -= 2;
-                    Instantiate(waffles, (this.transform.position + this.transform.forward * 5), this.transform.rotation);
-                }
-                break;
             case ingredient.juicer:
                 if (greenCount >= 1 && blueCount >= 2)
                 {
