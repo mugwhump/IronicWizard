@@ -12,13 +12,16 @@ public class cauldron_nom : Bonkable
     public GameObject friedEgg;
     public GameObject toast;
     public GameObject orangeJuice;
-    public GameObject eggyPlane;
-    public GameObject juicePlane;
-    public GameObject toastPlane;
+    public Transform eggyPlane;
+    public Transform juicePlane;
+    public Transform toastPlane;
     private int score = 0;
     private bool cookEggs = false;
     private bool cookJuice = false;
     private bool cookToast = false;
+    private Vector3 eggWin;
+    private Vector3 toastWin;
+    private Vector3 juiceWin;
     private bool isShrink = false; //For clarity, using to avoid outputting from cauldron while it is shrinking/consuming anything
     public ingredient cookwareValue = ingredient.RGB;
 
@@ -40,11 +43,20 @@ public class cauldron_nom : Bonkable
         }
     }
 
-    void start()
+    void Start()
     {
-        eggyPlane.GetComponent<MeshRenderer>().enabled = false;
-        juicePlane.GetComponent<MeshRenderer>().enabled = false;
-        toastPlane.GetComponent<MeshRenderer>().enabled = false;
+        eggWin = eggyPlane.position;
+        Vector3 eggStart = new Vector3(eggWin.x, -1.0f, eggWin.z);
+        eggyPlane.position = eggStart;
+        Debug.Log(eggStart + ", " + eggyPlane.position);
+
+        toastWin = toastPlane.position;
+        Vector3 toastStart = new Vector3(toastWin.x, -1.0f, toastWin.z);
+        toastPlane.position = toastStart;
+
+        juiceWin = juicePlane.position;
+        Vector3 juiceStart = new Vector3(juiceWin.x, -1.0f, juiceWin.z);
+        juicePlane.position = juiceStart;
     }
 
     void Update()
@@ -116,7 +128,7 @@ public class cauldron_nom : Bonkable
                     {
                         score += 1;
                         cookEggs = true;
-                        eggyPlane.GetComponent<MeshRenderer>().enabled = true;
+                        eggyPlane.transform.position = eggWin;
                     }
                 }
                 break;
@@ -130,7 +142,7 @@ public class cauldron_nom : Bonkable
                     {
                         score += 1;
                         cookJuice = true;
-                        juicePlane.GetComponent<MeshRenderer>().enabled = true;
+                        juicePlane.transform.position = juiceWin;
                     }
                 }
                 break;
@@ -145,7 +157,7 @@ public class cauldron_nom : Bonkable
                     {
                         score += 1;
                         cookToast = true;
-                        toastPlane.GetComponent<MeshRenderer>().enabled = true;
+                        toastPlane.transform.position = toastWin;
                     }
                 }
                 break;
