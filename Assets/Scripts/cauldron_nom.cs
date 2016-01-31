@@ -29,7 +29,7 @@ public class cauldron_nom : Bonkable
         }
     }
 
-    void altBonk()
+    public override void bonked()
     {
        if (cookwareValue != ingredient.RGB) //If we've actually got cookware in the cauldron
         {

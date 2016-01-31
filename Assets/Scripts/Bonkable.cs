@@ -3,8 +3,5 @@ using System.Collections;
 
 public class Bonkable : MonoBehaviour
 {
-    void altBonk()
-    {
-        return;
-    }
+    public virtual void bonked() { Debug.Log("Sadness!"); }
 }

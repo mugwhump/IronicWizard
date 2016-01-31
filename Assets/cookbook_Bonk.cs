@@ -6,7 +6,7 @@ public class cookbook_Bonk : Bonkable {
     public bool isOpen = false;
     private int page = 0;
 
-    void altBonk()
+    public override void bonked()
     {
         if (isOpen)
         {
