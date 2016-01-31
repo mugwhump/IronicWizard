@@ -14,6 +14,7 @@ public class cauldron_nom : Bonkable
     public GameObject coffee;
     public GameObject toast;
     public GameObject orangeJuice;
+    public GameObject waffles;
     private bool isShrink = false; //For clarity, using to avoid outputting from cauldron while it is shrinking/consuming anything
     public ingredient cookwareValue = ingredient.RGB;
 
@@ -37,7 +38,11 @@ public class cauldron_nom : Bonkable
 
     public override void bonked()
     {
-       if (cookwareValue != ingredient.RGB) //If we've actually got cookware in the cauldron
+       if(redCount+blueCount+greenCount <= -15)
+        {
+            Debug.Log("TEAPOTTTTTTTTTTTT");
+        } 
+       else if (cookwareValue != ingredient.RGB) //If we've actually got cookware in the cauldron
         {
             Debug.Log(this.gameObject.name + "bonked!");
             recipeCheck(cookwareValue);
@@ -90,49 +95,21 @@ public class cauldron_nom : Bonkable
                     Instantiate(friedEgg, (this.transform.position + this.transform.forward * 5), this.transform.rotation);
                 }
                 break;
-            case ingredient.saucePan:
-                if (redCount >= 1 && greenCount >= 2)
-                {
-                    redCount -= 1;
-                    greenCount -= 2;
-                    //spawnFood(hardBoiledEgg);
-                    //apply force to launch hardBoiledEgg
-                }
-                break;
-            case ingredient.coffeeThing:
-                if (redCount >= 2 && blueCount >= 1)
-                {
-                    redCount -= 2;
-                    blueCount -= 1;
-                    //spawnFood(coffee);
-                    //apply force to launch coffee
-                }
-                break;
-            case ingredient.waffleIron:
-                if (redCount >= 1 && blueCount >= 2)
-                {
-                    redCount -= 1;
-                    blueCount -= 2;
-                    //spawnFood(waffles);
-                    //apply force to launch waffles
-                }
-                break;
             case ingredient.juicer:
-                if (greenCount >= 2 && blueCount >= 1)
-                {
-                    greenCount -= 2;
-                    blueCount -= 1;
-                    //spawnFood(orangeJuice);
-                    //apply force to launch orangeJuice
-                }
-                break;
-            case ingredient.toaster:
                 if (greenCount >= 1 && blueCount >= 2)
                 {
                     greenCount -= 1;
                     blueCount -= 2;
-                    //spawnFood(toast);
-                    //apply force to launch toast
+                    Instantiate(orangeJuice, (this.transform.position + this.transform.forward * 5), this.transform.rotation);
+                }
+                break;
+            case ingredient.toaster:
+                if (redCount >=1 && greenCount >= 1 && blueCount >= 1)
+                {
+                    redCount -= 1;
+                    greenCount -= 1;
+                    blueCount -= 2;
+                    Instantiate(toast, (this.transform.position + this.transform.forward * 5), this.transform.rotation);
                 }
                 break;
             default:

@@ -1,4 +1,4 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum ingredient { fryPan, saucePan, coffeeThing, waffleIron, juicer, toaster, RGB };
+public enum ingredient { fryPan, juicer, toaster, RGB };
