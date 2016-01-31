@@ -10,7 +10,7 @@ public class Player : MonoBehaviour {
     public Collider wand; //Where the magic comes from!
 	public Material outlineMat; //Shader used to hilight active object
 
-	public float grabforce; //force applied every frame to grabbed object
+    public float grabforce; //force applied every frame to grabbed object
 	public float bonkForce;
     public float grabDist = 6; //distance to keep the grabbed object
 
@@ -18,8 +18,7 @@ public class Player : MonoBehaviour {
 	Material[] oldMats = null; //original material array of active object
 	Collider colliderInstance = null;
 	bool grabbing = false; //whether activeObj is being grabbed
-    private ParticleSystem particleSpray; //Need this to have something to attach to the wand
-    private ParticleSystem particleStream; //Need this to have something to Destroy() later
+    
 
 	// Use this for initialization
 	void Start () {
@@ -33,16 +32,17 @@ public class Player : MonoBehaviour {
 		colliderInstance.transform.position = transform.position + (transform.forward * grabDist);
 		if (Input.GetButtonDown ("Fire1")) {
 			Bonk ();
-		}
+            //play the click partcle effect
+            mouseClickParticle.Play();
+        }
 		if (Input.GetButtonDown ("Fire2")) {
 			Grab ();
+            grabParticle.Play();
         }
 		if (Input.GetButtonUp ("Fire2")) {
 			Release ();
+            grabParticle.Stop();
 		}
-
-        //move particle effects, if any
-        //if(FindObjectsOfType<ParticleSystem>().Find("particleStream"))
 
 		//move grabbed object
 		if (activeObj && grabbing) {
