@@ -45,7 +45,11 @@ public class Player : MonoBehaviour {
 		if (activeObj && grabbing) {
 			Vector3 dir = colliderInstance.transform.position - activeObj.transform.position;
 			dir.Normalize ();
-			activeObj.AddForce (dir * grabforce);
+			float dist = Vector3.Distance (colliderInstance.transform.position, activeObj.transform.position);
+			float speed = activeObj.GetPointVelocity (activeObj.transform.position).magnitude;
+
+			activeObj.AddForce (dir * grabforce * dist * (dist < speed * 2 ? .2f : 1));
+//			activeObj.AddForce (dir * grabforce * (dist < .25f ? dist : 1));
 		}
 	}
 
@@ -75,12 +79,14 @@ public class Player : MonoBehaviour {
 		if (activeObj == null)
 			return;
 		grabbing = true;
+		activeObj.useGravity = false;
 		particleStream = (ParticleSystem) Instantiate(grabParticle, (wand.transform.position + wand.transform.up), transform.rotation);
 		particleStream.gameObject.transform.parent = wand.transform;
 	}
 
 	void Release() {
 		grabbing = false;
+		activeObj.useGravity = true;
         if(GameObject.FindObjectOfType<ParticleSystem>())
         {
             Destroy(particleStream.gameObject);
