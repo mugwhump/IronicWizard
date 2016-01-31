@@ -9,11 +9,16 @@ public class cauldron_nom : Bonkable
     public int redCount = 0; //Some counters for recipes
     public int greenCount = 0;
     public int blueCount = 0;
+    public GameObject friedEgg;
+    public GameObject hardBoiledEgg;
+    public GameObject coffee;
+    public GameObject toast;
+    public GameObject orangeJuice;
     private bool isShrink = false; //For clarity, using to avoid outputting from cauldron while it is shrinking/consuming anything
-    ingredient cookwareValue = ingredient.RGB;
+    public ingredient cookwareValue = ingredient.RGB;
 
-    void OnCollisionEnter(Collision other)
-    {
+    void OnTriggerEnter(Collider other)
+    { 
         var obj = other.gameObject;
         var eatMe = obj.GetComponent<Edible>();
         if (!playerGrabbing(other.gameObject) && eatMe && !isShrink)
@@ -33,6 +38,7 @@ public class cauldron_nom : Bonkable
     {
        if (cookwareValue != ingredient.RGB) //If we've actually got cookware in the cauldron
         {
+            Debug.Log(this.gameObject.name + "bonked!");
             recipeCheck(cookwareValue);
             cookwareValue = ingredient.RGB;
         }
@@ -64,9 +70,8 @@ public class cauldron_nom : Bonkable
             currentTime += Time.deltaTime;
             yield return null;
         } while (currentTime <= time);
-
-        toShrink.UseUp(originalScale);
         isShrink = false;
+        toShrink.UseUp(originalScale);
     }
 
     void recipeCheck(ingredient cookware)
@@ -78,8 +83,7 @@ public class cauldron_nom : Bonkable
                 {
                     redCount -= 2;
                     greenCount -= 1;
-                    //spawnFood(friedEgg);
-                    //apply force to launch friedEgg
+                    Instantiate(friedEgg, (this.transform.position + this.transform.forward * 5), this.transform.rotation);
                 }
                 break;
             case ingredient.saucePan:
@@ -131,11 +135,5 @@ public class cauldron_nom : Bonkable
                 Debug.Log("uhhh");
                 break;
         }
-    }
-
-    void spawnFood(GameObject food)
-    {
-        //GameObject food = Instantiate(food, (transform.position + transform.up * 2), transform.rotation)
-        //food.Rigidbody.AddForce(-1 * transform.position * foodForce, ForceMode.Impulse)
     }
 }
