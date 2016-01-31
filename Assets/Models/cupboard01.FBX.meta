@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 9eb20e609ae49e843baee4e8056fd9f8
-timeCreated: 1454188812
+guid: 192b74a89e8880242980059fbed97919
+timeCreated: 1454220552
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Box003
+    4300000: Corner_Cupboard
     9500000: //RootNode
   materials:
     importMaterials: 1
