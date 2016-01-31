@@ -32,7 +32,7 @@ public class StartScreen : MonoBehaviour
 			hide();
 	}
 	//function to enable the loading screen
-	public void show()
+	public static void show()
 	{
 		Debug.Log ("ANUS :D");
 		//if instance does not exists return from this function
@@ -45,7 +45,7 @@ public class StartScreen : MonoBehaviour
 		instance.loadingScreenImage.SetActive(true);
 	}
 	//function to hide the loading screen
-	public void hide()
+	public static void hide()
 	{
 		if (!InstanceExists())
 		{
