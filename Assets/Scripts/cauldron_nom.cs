@@ -37,7 +37,11 @@ public class cauldron_nom : Bonkable
 
     public override void bonked()
     {
-       if (cookwareValue != ingredient.RGB) //If we've actually got cookware in the cauldron
+       if(redCount+blueCount+greenCount <= -15)
+        {
+            Debug.Log("TEAPOTTTTTTTTTTTT");
+        } 
+       else if (cookwareValue != ingredient.RGB) //If we've actually got cookware in the cauldron
         {
             Debug.Log(this.gameObject.name + "bonked!");
             recipeCheck(cookwareValue);
