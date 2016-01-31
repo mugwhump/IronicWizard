@@ -87,8 +87,11 @@ public class Player : MonoBehaviour {
 		MeshRenderer mr = other.GetComponent<MeshRenderer>();
 		if ( mr ) {
 			oldMats = mr.materials;
-			Material[] mats = new Material[mr.materials.Length + 1];
-			mats [mr.materials.Length] = outlineMat;
+			Material[] mats = new Material[mr.materials.Length];
+			for (int i = 0; i < mats.Length; i++) {
+				mats [i] = outlineMat;
+				mats [i].mainTexture = mr.materials [i].mainTexture;
+			}
 			mr.materials = mats;
 		}
 	}
