@@ -15,7 +15,7 @@ public class cauldron_nom : MonoBehaviour
     {
         var obj = other.gameObject;
         var eatMe = obj.GetComponent<Edible>();
-        if (!playerGrabbing(other.gameObject) && eatMe)
+        if (!playerGrabbing(other.gameObject) && eatMe && !isShrink)
         {
             redCount += eatMe.redValue;
             greenCount += eatMe.greenValue;
