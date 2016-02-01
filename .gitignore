@@ -4,3 +4,5 @@ Assembly-CSharp-Editor.csproj
 Assembly-CSharp-firstpass.csproj
 Assembly-CSharp.csproj
 IronicWizard.sln
+bin/
+*.zip
