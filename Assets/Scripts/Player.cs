@@ -37,7 +37,7 @@ public class Player : MonoBehaviour {
 			Bonk ();
             //play the click partcle effect
             mouseClickParticle.Play();
-			if (Random.value < .20f) {
+			if (Random.value < .07f) {
 				Debug.Log ("audio");
 				AudioClip clip = GameObject.FindGameObjectWithTag ("SoundController").GetComponent<SoundController> ().GetSound (soundType.wizardSpells);
 				source.clip = clip;
@@ -47,7 +47,7 @@ public class Player : MonoBehaviour {
 		if (Input.GetButtonDown ("Fire2")) {
 			Grab ();
 			grabParticle.Play();
-			if (Random.value < .20f) {
+			if (Random.value < .07f) {
 				AudioClip clip = GameObject.FindGameObjectWithTag ("SoundController").GetComponent<SoundController> ().GetSound (soundType.wizardSpells);
 				source.clip = clip;
 				source.Play ();
