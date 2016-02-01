@@ -31,6 +31,10 @@ public class SoundController : MonoBehaviour {
 			return RandomSound (metal);
 		case soundType.box:
 			return RandomSound (box);
+		case soundType.wizardYays:
+			return RandomSound (wizardYays);
+		case soundType.wizardSpells:
+			return RandomSound (wizardSpells);
 		}
 		return null;
 	}

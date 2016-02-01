@@ -18,10 +18,13 @@ public class Player : MonoBehaviour {
 	Material[] oldMats = null; //original material array of active object
 	Collider colliderInstance = null;
 	bool grabbing = false; //whether activeObj is being grabbed
-    
+
+	AudioSource source;
 
 	// Use this for initialization
 	void Start () {
+		source = gameObject.AddComponent<AudioSource> ();
+//		if (source == null)
 		//create wand
 		Instantiate (wand, transform.position + new Vector3(-4.15f, 2.1f, 10.3f), Quaternion.FromToRotation(Vector3.up, transform.forward + new Vector3(0,194.3f,0)));
 		colliderInstance = Instantiate (grabCollider, transform.position + (transform.forward * 3f), transform.rotation) as Collider;
@@ -34,10 +37,21 @@ public class Player : MonoBehaviour {
 			Bonk ();
             //play the click partcle effect
             mouseClickParticle.Play();
+			if (Random.value < .20f) {
+				Debug.Log ("audio");
+				AudioClip clip = GameObject.FindGameObjectWithTag ("SoundController").GetComponent<SoundController> ().GetSound (soundType.wizardSpells);
+				source.clip = clip;
+				source.Play ();
+			}
         }
 		if (Input.GetButtonDown ("Fire2")) {
 			Grab ();
-            grabParticle.Play();
+			grabParticle.Play();
+			if (Random.value < .20f) {
+				AudioClip clip = GameObject.FindGameObjectWithTag ("SoundController").GetComponent<SoundController> ().GetSound (soundType.wizardSpells);
+				source.clip = clip;
+				source.Play ();
+			}
         }
 		if (Input.GetButtonUp ("Fire2")) {
 			Release ();

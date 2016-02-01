@@ -25,6 +25,7 @@ public class cauldron_nom : Bonkable
     private Vector3 juiceWin;
     private bool isShrink = false; //For clarity, using to avoid outputting from cauldron while it is shrinking/consuming anything
     public ingredient cookwareValue = ingredient.RGB;
+	public AudioClip sploosh;
 
     //void OnTriggerEnter(Collider other)
     void OnTriggerStay(Collider other)
@@ -41,6 +42,7 @@ public class cauldron_nom : Bonkable
                 cookwareValue = eatMe.id;
             }          
             StartCoroutine(shrink(shrinkTime, eatMe));
+			GetComponent<AudioSource> ().PlayOneShot (sploosh);
         }
     }
 
